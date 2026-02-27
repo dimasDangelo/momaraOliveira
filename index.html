@@ -3,366 +3,418 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Momara Oliveira | Psicóloga | WhatsApp</title>
-  <meta name="description" content="Momara Oliveira - Psicóloga. Atendimento e agendamento pelo WhatsApp." />
+  <title>Momara Oliveira • Psicóloga</title>
+  <meta name="description" content="Link na bio da Psicóloga Momara Oliveira — WhatsApp e redes." />
 
   <style>
     :root{
-      /* Neutros + toque suave */
-      --bgA:#f6f3ee;
-      --bgB:#ece7df;
-      --ink:#1f2427;
-      --muted:#4b5257;
+  --bg1:#f9ddb2;      /* bege claro */
+  --bg2:#d788a5;      /* rosa bem suave */
+  --bg3:#d89684;      /* quase branco rosado */
 
-      --card: rgba(255,255,255,.72);
-      --stroke: rgba(255,255,255,.55);
-      --shadow: rgba(0,0,0,.16);
+  --card:#ffffffd9;
+  --card2:#ffffffb5;
 
-      /* Acento “psicologia” (dourado neutro) */
-      --gold1:#c7a86c;
-      --gold2:#a98543;
+  --text:#2b2b2b;
+  --muted:#6a6a6a;
 
-      /* WhatsApp */
-      --wa1:#2ecc71;
-      --wa2:#1fa45a;
+  --accent:#b0897a;      /* bege rosado */
+  --accent2:#d8b4c2;     /* rosa delicado */
 
-      --radius: 18px;
-    }
-
+  --line:#00000010;
+  --shadow: 0 18px 50px rgba(0,0,0,.08);
+  --radius: 22px;
+}
     *{ box-sizing:border-box; margin:0; padding:0; }
-    html,body{ height:100%; }
-
     body{
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--ink);
-      overflow-x:hidden;
-
+      min-height:100vh;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 10% 10%, #ffffff 0%, transparent 55%),
+        radial-gradient(900px 600px at 90% 20%, #ffffff 0%, transparent 60%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
       display:flex;
       align-items:center;
       justify-content:center;
-      padding: 26px 14px;
-
-      /* Fundo neutro elegante com textura “papel” 100% CSS */
-      background:
-        radial-gradient(1200px 700px at 30% 20%, rgba(255,255,255,.55), transparent 55%),
-        radial-gradient(900px 600px at 80% 80%, rgba(199,168,108,.18), transparent 55%),
-        repeating-linear-gradient(0deg, rgba(0,0,0,.02) 0 2px, rgba(255,255,255,.02) 2px 4px),
-        linear-gradient(135deg, var(--bgA), var(--bgB));
+      padding:22px;
+      overflow-x:hidden;
     }
 
-    /* brilho suave animado */
-    body::before{
-      content:"";
+    /* brilho/partículas suaves */
+    .glow{
       position:fixed;
-      inset:-40%;
-      background:
-        radial-gradient(closest-side at 20% 30%, rgba(255,255,255,.24), transparent 55%),
-        radial-gradient(closest-side at 75% 55%, rgba(199,168,108,.18), transparent 60%),
-        radial-gradient(closest-side at 55% 85%, rgba(0,0,0,.08), transparent 55%);
-      filter: blur(14px);
-      opacity:.9;
+      inset:-60px;
       pointer-events:none;
-      animation: drift 7s ease-in-out infinite alternate;
-      transform: rotate(8deg);
+      background:
+        radial-gradient(14px 14px at 12% 25%, rgba(139,125,107,.18), transparent 60%),
+        radial-gradient(10px 10px at 78% 40%, rgba(182,165,143,.18), transparent 60%),
+        radial-gradient(18px 18px at 35% 78%, rgba(139,125,107,.14), transparent 60%),
+        radial-gradient(12px 12px at 92% 80%, rgba(182,165,143,.12), transparent 60%);
+      animation: floatGlow 10s ease-in-out infinite;
+      filter: blur(0.2px);
     }
-    @keyframes drift{
-      0%   { transform: translate(-2%, -1%) rotate(8deg); opacity:.75; }
-      100% { transform: translate(2%, 1%) rotate(8deg); opacity:.95; }
+    @keyframes floatGlow{
+      0%,100%{ transform: translate3d(0,0,0) scale(1); opacity:.9; }
+      50%{ transform: translate3d(0,-10px,0) scale(1.02); opacity:.75; }
     }
 
     .wrap{
-      width: min(440px, 100%);
-      position:relative;
-      z-index:1;
-    }
-
-    /* Espaço para LOGO (círculo) */
-    .logo-circle{
-      width: 112px;
-      height: 112px;
-      border-radius: 999px;
-      margin: 0 auto -56px;
-      background: linear-gradient(135deg, rgba(255,255,255,.8), rgba(255,255,255,.5));
-      border: 1px solid rgba(0,0,0,.06);
-      box-shadow: 0 18px 40px rgba(0,0,0,.18);
-      overflow:hidden;
-      display:grid;
-      place-items:center;
-      position:relative;
-      z-index:2;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      animation: float 3.2s ease-in-out infinite;
-    }
-    .logo-circle img{
       width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-    .logo-placeholder{
-      width: 76px;
-      height: 76px;
-      border-radius: 999px;
-      border: 1px dashed rgba(0,0,0,.18);
-      display:grid;
-      place-items:center;
-      color: rgba(0,0,0,.45);
-      font-weight: 800;
-      font-size: .85rem;
-      letter-spacing:.3px;
-      background: rgba(255,255,255,.45);
-    }
-    @keyframes float{
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
+      max-width:420px;
+      position:relative;
     }
 
     .card{
-      background: var(--card);
-      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      border:1px solid var(--line);
       border-radius: var(--radius);
-      box-shadow: 0 24px 70px var(--shadow);
-      padding: 74px 18px 18px; /* espaço para a logo */
+      box-shadow: var(--shadow);
+      padding:22px 18px 18px;
       position:relative;
       overflow:hidden;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      animation: popIn .6s ease-out both;
+      backdrop-filter: blur(10px);
+    }
+    @keyframes popIn{
+      from{ transform: translateY(10px) scale(.98); opacity:0; }
+      to{ transform: translateY(0) scale(1); opacity:1; }
     }
 
-    /* detalhe superior “faixa dourada” */
+    /* “bordas vivas” */
     .card::before{
       content:"";
       position:absolute;
-      top: 16px;
-      left: -60px;
-      width: 190px;
-      height: 36px;
-      border-radius: 12px;
-      transform: rotate(-12deg);
-      background:
-        repeating-linear-gradient(45deg,
-          rgba(199,168,108,.95) 0 12px,
-          rgba(31,36,39,.85) 12px 24px
-        );
-      box-shadow: 0 12px 26px rgba(0,0,0,.18);
-      opacity:.85;
-      animation: ribbon 3s ease-in-out infinite;
+      inset:-2px;
+      background: conic-gradient(
+        from 180deg,
+        rgba(139,125,107,.15),
+        rgba(182,165,143,.35),
+        rgba(139,125,107,.18),
+        rgba(182,165,143,.12)
+      );
+      filter: blur(14px);
+      opacity:.6;
+      animation: spin 8s linear infinite;
+      z-index:-1;
     }
-    @keyframes ribbon{
-      0%,100%{ transform: rotate(-12deg) translateY(0); }
-      50%{ transform: rotate(-10deg) translateY(-2px); }
-    }
+    @keyframes spin{ to{ transform: rotate(360deg); } }
 
-    .header{
+    header{
       display:flex;
-      gap: 14px;
       align-items:center;
+      gap:14px;
+      padding:6px 6px 14px;
+      border-bottom:1px solid var(--line);
+      margin-bottom:16px;
     }
 
-    /* Brasão/símbolo da Psicologia (estilização CSS + SVG) */
-    .psi-badge{
-      width: 58px;
-      height: 58px;
-      border-radius: 16px;
-      background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.45));
-      border: 1px solid rgba(0,0,0,.08);
-      box-shadow: 0 12px 28px rgba(0,0,0,.12);
-      display:grid;
-      place-items:center;
-      position:relative;
-      overflow:hidden;
-    }
-    .psi-badge::after{
-      content:"";
-      position:absolute;
-      inset:-40%;
-      background: radial-gradient(circle at 30% 30%, rgba(199,168,108,.35), transparent 55%);
-      filter: blur(10px);
-      animation: halo 5.5s ease-in-out infinite alternate;
-    }
-    @keyframes halo{
-      0%{ transform: translate(-3%,-2%); opacity:.6; }
-      100%{ transform: translate(3%,2%); opacity:.9; }
-    }
-    .psi-icon{
-      width: 30px;
-      height: 30px;
-      z-index:1;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,.12));
-    }
-
-    .title h1{
-      font-size: 1.35rem;
-      letter-spacing:.2px;
-      line-height:1.15;
-    }
-    .title p{
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: .98rem;
-      line-height:1.2;
-    }
-
-    .divider{
-      margin: 18px 0 14px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,0,0,.18), transparent);
-    }
-
-    .btn{
-      width: 100%;
+    .logo{
+      width:502px;
+      height:222px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(20px 20px at 25% 20%, rgba(255,255,255,.85), transparent 60%),
+        linear-gradient(135deg, rgba(139,125,107,.22), rgba(182,165,143,.12));
       display:flex;
       align-items:center;
       justify-content:center;
-      gap: 10px;
-      padding: 14px 16px;
-      border-radius: 14px;
-      text-decoration:none;
-      font-weight: 800;
-      letter-spacing:.2px;
-      color: #fff;
-
-      background: linear-gradient(135deg, var(--wa1), var(--wa2));
-      box-shadow: 0 16px 34px rgba(31,164,90,.30);
       position:relative;
       overflow:hidden;
+    }
+    .logo img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;   /* mantém proporção */
+      }
+    .psi{
+      font-size:34px;
+      font-weight:700;
+      color:var(--accent);
+      letter-spacing:1px;
+      transform: translateY(-1px);
+      text-shadow: 0 6px 18px rgba(0,0,0,.08);
+    }
+    .logo::after{
+      content:"";
+      position:absolute;
+      width:120%;
+      height:120%;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.8), transparent 55%);
+      animation: shine 2.8s ease-in-out infinite;
+      opacity:.55;
+    }
+    @keyframes shine{
+      0%,100%{ transform: translate(-10%, -10%); }
+      50%{ transform: translate(10%, 10%); }
+    }
 
-      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
-      animation: pulse 2.4s ease-in-out infinite;
+    .title{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      min-width:0;
+    }
+    .name{
+      font-size:20px;
+      font-weight:800;
+      letter-spacing:.2px;
+      line-height:1.1;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .role{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    @keyframes pulse{
+      0%,100%{ transform: scale(1); opacity:.9; }
+      50%{ transform: scale(1.15); opacity:.65; }
+    }
+
+    .links{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-top:12px;
+    }
+
+    .btn{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      width:100%;
+      text-decoration:none;
+      padding:14px 14px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.7);
+      color: var(--text);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      transform: translateY(0);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      position:relative;
+      overflow:hidden;
     }
     .btn:hover{
       transform: translateY(-2px);
-      box-shadow: 0 20px 46px rgba(31,164,90,.42);
-      filter: brightness(1.02);
+      box-shadow: 0 18px 35px rgba(0,0,0,.10);
+      background: rgba(255,255,255,.9);
     }
-    .btn:active{ transform: translateY(0) scale(.99); }
+    .btn:active{ transform: translateY(0); }
 
-    .btn::before{
+    .btn .left{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .icon{
+      width:38px; height:38px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(139,125,107,.25);
+      background: linear-gradient(135deg, rgba(139,125,107,.18), rgba(182,165,143,.10));
+      flex-shrink:0;
+    }
+    /* Container do avatar */
+.avatar-container{
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+/* Avatar circular flutuando */
+.avatar{
+  position: absolute;
+  top: -60px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid #f6f4ef;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  background: white;
+  animation: floatAvatar 4s ease-in-out infinite;
+  z-index: 10;
+}
+
+.avatar img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* animação flutuando */
+@keyframes floatAvatar{
+  0%,100%{
+    transform: translateY(0);
+  }
+  50%{
+    transform: translateY(-8px);
+  }
+}
+
+/* Ajuste do card para dar espaço ao avatar */
+.card{
+  margin-top: 70px;
+  padding-top: 70px;
+}
+
+    .btn strong{
+      font-size:14px;
+      display:block;
+      line-height:1.1;
+    }
+    .btn span{
+      font-size:12px;
+      color: var(--muted);
+      display:block;
+      margin-top:2px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:260px;
+    }
+
+    .arrow{
+      color:var(--accent);
+      font-weight:700;
+      opacity:.9;
+      transition: transform .18s ease;
+    }
+    .btn:hover .arrow{ transform: translateX(2px); }
+
+    /* onda bem sutil passando no botão */
+    .btn::after{
       content:"";
       position:absolute;
-      top:-30%;
-      left:-60%;
-      width: 60%;
-      height: 160%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent);
-      transform: rotate(18deg);
-      animation: shine 1.9s ease-in-out infinite;
-      opacity:.85;
+      inset:-40px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255,255,255,.40) 45%,
+        transparent 60%
+      );
+      transform: translateX(-80%) rotate(10deg);
+      animation: sweep 4.2s ease-in-out infinite;
+      opacity:.55;
       pointer-events:none;
     }
-    @keyframes shine{
-      0%{ left:-70%; }
-      100%{ left:120%; }
-    }
-    @keyframes pulse{
-      0%,100%{ box-shadow: 0 16px 34px rgba(31,164,90,.30); }
-      50%{ box-shadow: 0 20px 48px rgba(31,164,90,.44); }
+    @keyframes sweep{
+      0%{ transform: translateX(-90%) rotate(10deg); }
+      35%{ transform: translateX(120%) rotate(10deg); }
+      100%{ transform: translateX(120%) rotate(10deg); }
     }
 
-    .wa-ico{
-      width: 22px;
-      height: 22px;
-      flex: 0 0 22px;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,.18));
-    }
-
-    .hint{
-      margin-top: 12px;
+    .footer{
       text-align:center;
-      color: rgba(0,0,0,.62);
-      font-size: .9rem;
-    }
-
-    /* “linha” dourada animada no rodapé do card */
-    .gold-line{
-      margin-top: 14px;
-      height: 10px;
-      border-radius: 999px;
-      background:
-        linear-gradient(90deg, rgba(199,168,108,.25), rgba(199,168,108,.05)),
-        repeating-linear-gradient(90deg, rgba(0,0,0,.08) 0 10px, rgba(255,255,255,.15) 10px 20px);
-      opacity:.75;
-      animation: goldMove 3.6s linear infinite;
-    }
-    @keyframes goldMove{
-      from{ background-position: 0 0, 0 0; }
-      to{ background-position: 0 0, 140px 0; }
+      margin-top:14px;
+      color: var(--muted);
+      font-size:12px;
+      opacity:.9;
     }
 
     /* acessibilidade */
-    .btn:focus-visible{
-      outline: 3px solid rgba(46,204,113,.45);
+    .btn:focus{
+      outline: 3px solid rgba(182,165,143,.45);
       outline-offset: 3px;
-    }
-    @media (prefers-reduced-motion: reduce){
-      body::before, .logo-circle, .card::before, .psi-badge::after, .btn { animation: none !important; }
     }
   </style>
 </head>
 
 <body>
+  <div class="glow"></div>
+
   <main class="wrap">
-    <!-- Espaço para logo (troque por <img src="sua-logo.png"> se quiser) -->
-    <div class="logo-circle" aria-label="Logo Momara Oliveira">
-      <!-- Opção A: usar imagem -->
-      <!-- <img src="logo.png" alt="Logo Momara Oliveira"> -->
-
-      <!-- Opção B: placeholder (apague quando colocar a logo) -->
-      <div class="logo-placeholder">LOGO</div>
-    </div>
-
-    <section class="card" aria-label="Link de bio Momara Oliveira">
-      <div class="header">
-        <div class="psi-badge" aria-hidden="true">
-          <!-- Símbolo Ψ (psicologia) em SVG, com detalhe “dourado” -->
-          <svg class="psi-icon" viewBox="0 0 64 64" aria-hidden="true">
-            <path fill="none" stroke="url(#g)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"
-              d="M32 10
-                 C32 10, 24 10, 24 22
-                 C24 34, 32 34, 32 34
-                 C32 34, 40 34, 40 22
-                 C40 10, 32 10, 32 10
-                 M20 22
-                 C20 22, 14 22, 14 30
-                 C14 38, 20 38, 20 38
-                 M44 22
-                 C44 22, 50 22, 50 30
-                 C50 38, 44 38, 44 38
-                 M32 34
-                 L32 54" />
-            <defs>
-              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#c7a86c"/>
-                <stop offset="1" stop-color="#a98543"/>
-              </linearGradient>
-            </defs>
-          </svg>
+    <div class="avatar-container">
+  <div class="avatar">
+    <img src="logo.jpg" alt="Momara Oliveira">
+  </div>
+</div>
+    <section class="card" aria-label="Link na bio">
+      <header>
+        <!-- Espaço para Logo (se quiser trocar por imagem, veja comentário abaixo) -->
+        <div class="logo" aria-label="Símbolo da Psicologia">
+            <img  src="Vertical_4.png" alt="logo img">
+          <!-- <div class="psi">ss</div> -->
         </div>
 
-        <div class="title">
-          <h1>Momara Oliveira</h1>
-          <p>Psicóloga • Atendimento e agendamento pelo WhatsApp</p>
-        </div>
+        <!-- <div class="title">
+          <div class="name">Momara Oliveira</div>
+          <div class="role">Psicóloga </div>
+        </div> -->
+      </header>
+
+      <div class="links">
+        <!-- WhatsApp -->
+        <a class="btn" href="https://wa.me/5553299133664" target="_blank" rel="noopener">
+          <div class="left">
+            <div class="icon" aria-hidden="true">
+              <!-- ícone WhatsApp (SVG simples) -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M20 12a8 8 0 0 1-11.9 7.1L4 20l.9-3.8A8 8 0 1 1 20 12Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9.3 9.4c.2-.4.4-.4.6-.4h.5c.2 0 .4 0 .5.3l.6 1.5c.1.3.1.5-.1.7l-.4.5c-.1.1-.2.3 0 .6.2.3.7 1.1 1.5 1.7.9.7 1.6.9 1.9 1 .3.1.5 0 .6-.1l.5-.6c.2-.2.4-.2.6-.1l1.4.7c.3.1.3.3.3.5 0 .2-.1.8-.5 1.1-.4.3-1.1.6-2.3.2-1.2-.4-2.6-1.1-3.8-2.3-1.2-1.2-2-2.7-2.2-3.8-.2-1.2.1-1.8.4-2.1Z" fill="currentColor" opacity=".9"/>
+              </svg>
+            </div>
+            <div>
+              <strong>WhatsApp</strong>
+              <span>Clique para ir ao WhatsApp</span>
+            </div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <!-- Agendamento (exemplo) -->
+        <!-- <a class="btn" href="#" onclick="alert('Você pode trocar este link pelo seu Calendly/agenda.'); return false;">
+          <div class="left">
+            <div class="icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 3v3M17 3v3M4 8h16M6 12h4M6 16h4M14 12h4M14 16h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M6 5h12a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.7"/>
+              </svg>
+            </div>
+            <div>
+              <strong>Agendar atendimento</strong>
+              <span>Coloque aqui seu link de agenda</span>
+            </div>
+          </div>
+          <div class="arrow">›</div>
+        </a> -->
+
+        <!-- Email (exemplo) -->
+        <a class="btn" href="mailto:momara.psi@gmail.com">
+          <div class="left">
+            <div class="icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <strong>E-mail</strong>
+              <span>momara.psi@gmail.com</span>
+            </div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
       </div>
 
-      <div class="divider"></div>
-
-      <a class="btn"
-         href="https://wa.me/5553299133664"
-         target="_blank"
-         rel="noopener noreferrer"
-         aria-label="Abrir WhatsApp para falar com Momara Oliveira">
-        <svg class="wa-ico" viewBox="0 0 32 32" aria-hidden="true">
-          <path fill="white" d="M19.11 17.47c-.3-.15-1.76-.86-2.03-.96-.27-.1-.47-.15-.66.15-.2.3-.76.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.27-.46-2.42-1.47-.9-.8-1.5-1.78-1.68-2.08-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.66-1.6-.9-2.2-.24-.58-.48-.5-.66-.5h-.56c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.1 4.5.71.31 1.26.5 1.7.64.71.23 1.35.2 1.86.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.3.17-1.41-.07-.12-.27-.2-.57-.35z"/>
-          <path fill="white" d="M16 3C8.83 3 3 8.83 3 16c0 2.3.61 4.55 1.77 6.53L3.6 28.4l5.99-1.13A12.9 12.9 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3zm0 23.7c-2.1 0-4.15-.6-5.9-1.75l-.42-.27-3.55.67.7-3.46-.28-.45A10.73 10.73 0 1 1 16 26.7z"/>
-        </svg>
-        Falar no WhatsApp
-      </a>
-
-      <p class="hint">🕊️ Clique para iniciar a conversa</p>
-      <div class="gold-line" aria-hidden="true"></div>
+      <div class="footer">
+        Ψ • Cuidado, ética e acolhimento
+      </div>
     </section>
+
+    <!-- DICA:
+      Se você tiver uma imagem da logo/brasão, substitua o bloco .logo por:
+      <div class="logo"><img src="logo.png" alt="Logo" style="width:100%;height:100%;object-fit:cover;border-radius:18px;"></div>
+      e coloque o arquivo logo.png na mesma pasta do index.html
+    -->
   </main>
 </body>
 </html>
